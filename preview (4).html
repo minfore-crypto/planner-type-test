@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>나는 어떤 기획자인가?</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#f6f2e9!important;color:#1f1f1f!important;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;-webkit-text-size-adjust:100%;}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 56px}
+.hero{background:#222;color:#fff!important;border-radius:28px;padding:28px 22px;margin-bottom:16px;box-shadow:0 10px 25px rgba(0,0,0,.16)}
+.eyebrow{font-size:13px;opacity:.75;margin-bottom:8px;color:#fff!important}
+h1{margin:0 0 12px;color:#fff!important;font-size:34px;line-height:1.12;letter-spacing:-1.2px}
+.hero p{color:#fff!important;opacity:.88;margin:0;line-height:1.65;font-size:15px}
+.progress{height:8px;background:#e6ded0;border-radius:999px;overflow:hidden;margin:18px 2px}
+.bar{height:100%;width:0%;background:#222;border-radius:999px;transition:width .2s}
+.qcard{background:#fffdf8!important;color:#1f1f1f!important;border:1px solid #e7dfd2;border-radius:24px;padding:21px 17px;margin:14px 0;box-shadow:0 8px 22px rgba(45,35,20,.07)}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.qno{color:#82786b!important;font-weight:800;font-size:13px}
+.scene{color:#645b50!important;background:#f1eadf;border-radius:999px;padding:6px 10px;font-size:12px;white-space:nowrap}
+.qtext{color:#1f1f1f!important;font-size:17px;line-height:1.62;font-weight:800;margin-bottom:16px;letter-spacing:-.4px}
+.option{color:#1f1f1f!important;background:#fff!important;border:1px solid #e2dacd;border-radius:18px;padding:15px 14px;margin:10px 0;line-height:1.55;font-size:15px;display:flex;align-items:flex-start;gap:11px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.option input{position:absolute;opacity:0;pointer-events:none}
+.option:has(input:checked){background:#222!important;color:#fff!important;border-color:#222}
+.mark{flex:0 0 auto;width:27px;height:27px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#f1eadf;color:#1f1f1f!important;font-weight:900;font-size:13px}
+.option:has(input:checked) .mark{background:#fff;color:#222!important}
+.btn{width:100%;border:0;border-radius:20px;padding:17px 16px;background:#222;color:#fff!important;font-weight:900;font-size:16px;margin-top:18px;cursor:pointer}
+.btn.secondary{background:#fff;color:#222!important;border:1px solid #e2dacd}
+#result{display:none;margin-top:22px}
+.result-card{background:#fffdf8!important;color:#1f1f1f!important;border:1px solid #e7dfd2;border-radius:30px;padding:22px;box-shadow:0 12px 32px rgba(45,35,20,.12)}
+.visual{height:210px;border-radius:26px;background:linear-gradient(135deg,#fff1c9,#e9f0ec);display:flex;align-items:center;justify-content:center;margin-bottom:18px;position:relative;overflow:hidden}
+.person{text-align:center;position:relative}
+.head{width:98px;height:98px;background:#ffddb5;border:4px solid rgba(0,0,0,.08);border-radius:34px;margin:0 auto 8px;position:relative}
+.hair{position:absolute;left:13px;top:-9px;width:72px;height:36px;background:#333;border-radius:28px 28px 8px 8px}
+.eye{position:absolute;top:45px;width:9px;height:9px;background:#222;border-radius:50%}
+.eye.left{left:30px}.eye.right{right:30px}
+.mouth{position:absolute;left:39px;top:65px;width:22px;height:10px;border-bottom:3px solid #222;border-radius:0 0 20px 20px}
+.body{width:142px;height:62px;margin:0 auto;background:#303030;border-radius:32px 32px 16px 16px}
+.prop{position:absolute;right:-5px;bottom:12px;font-size:44px}
+.code{color:#82786b!important;font-size:13px;font-weight:900;margin-bottom:4px}
+.rname{color:#1f1f1f!important;font-size:30px;line-height:1.2;font-weight:950;letter-spacing:-1px;margin-bottom:8px}
+.one{color:#4d463e!important;line-height:1.6;font-weight:700;font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.tag{color:#554d43!important;background:#f1eadf;border-radius:999px;padding:8px 11px;font-size:13px;font-weight:800}
+.info{background:#fff!important;color:#1f1f1f!important;border:1px solid #ebe4d8;border-radius:18px;padding:15px;margin:10px 0}
+.info h3{color:#7d7163!important;font-size:14px;margin:0 0 8px}
+.info p{color:#1f1f1f!important;line-height:1.68;font-size:15px;margin:0}
+.note{color:#62594e!important;background:#f1eadf;border-radius:18px;padding:14px;margin-top:14px;line-height:1.6;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div class="eyebrow">기획자 유형 테스트</div>
+<h1>나는 어떤<br>기획자인가?</h1>
+<p>정답 없는 12개의 상황 질문임.<br>당신이 프로젝트 안에서 먼저 보는 것, 움직이는 방식, 남기는 방식을 확인해보셈.</p>
+</section>
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<form id="quiz">
+
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q1</div><div class="scene">행사 직전</div></div>
+  <div class="qtext">행사 시작 20분 전. 아직 사람들이 많이 안 왔다.</div>
+  <label class="option"><input type="radio" name="q1" value="A"><span class="mark">A</span><span>입구 주변 분위기랑 사람들 표정을 괜히 살핀다</span></label>
+  <label class="option"><input type="radio" name="q1" value="B"><span class="mark">B</span><span>큐시트·동선·마이크 상태를 다시 확인한다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q2</div><div class="scene">회의 중</div></div>
+  <div class="qtext">회의가 예상보다 길어지고 있다.</div>
+  <label class="option"><input type="radio" name="q2" value="A"><span class="mark">A</span><span>사람들이 지치지 않게 중간중간 반응한다</span></label>
+  <label class="option"><input type="radio" name="q2" value="B"><span class="mark">B</span><span>종이나 화이트보드에 지금까지 나온 얘기를 정리하기 시작한다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q3</div><div class="scene">행사 후</div></div>
+  <div class="qtext">행사가 끝난 뒤 집에 돌아왔는데 가장 오래 남는 것은?</div>
+  <label class="option"><input type="radio" name="q3" value="A"><span class="mark">A</span><span>누군가 웃던 장면이나 대화</span></label>
+  <label class="option"><input type="radio" name="q3" value="B"><span class="mark">B</span><span>전체 흐름이 잘 굴러가던 순간</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q4</div><div class="scene">새 제안</div></div>
+  <div class="qtext">누가 ‘이번엔 좀 다르게 해보자’고 말했을 때 나는?</div>
+  <label class="option"><input type="radio" name="q4" value="A"><span class="mark">A</span><span>머릿속으로 인력표·예산표부터 떠오른다</span></label>
+  <label class="option"><input type="radio" name="q4" value="B"><span class="mark">B</span><span>갑자기 떠오르는 레퍼런스 때문에 말이 많아진다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q5</div><div class="scene">협업 중</div></div>
+  <div class="qtext">프로젝트를 같이 할 때 더 불안한 사람은?</div>
+  <label class="option"><input type="radio" name="q5" value="A"><span class="mark">A</span><span>아이디어는 많은데 정리가 안 되는 사람</span></label>
+  <label class="option"><input type="radio" name="q5" value="B"><span class="mark">B</span><span>늘 하던 방식만 반복하려는 사람</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q6</div><div class="scene">기획 초반</div></div>
+  <div class="qtext">새로운 프로젝트 이야기를 들으면 나는 보통?</div>
+  <label class="option"><input type="radio" name="q6" value="A"><span class="mark">A</span><span>‘이거 실제로 굴러갈까?’가 먼저 든다</span></label>
+  <label class="option"><input type="radio" name="q6" value="B"><span class="mark">B</span><span>‘이거 재밌겠다’가 먼저 튀어나온다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q7</div><div class="scene">사진 정리</div></div>
+  <div class="qtext">행사 사진을 받을 때 더 오래 보게 되는 것은?</div>
+  <label class="option"><input type="radio" name="q7" value="A"><span class="mark">A</span><span>사람들이 웃고 있는 장면</span></label>
+  <label class="option"><input type="radio" name="q7" value="B"><span class="mark">B</span><span>공간이나 결과물이 잘 나온 장면</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q8</div><div class="scene">마무리</div></div>
+  <div class="qtext">프로젝트가 끝난 뒤 내가 더 자주 확인하는 것은?</div>
+  <label class="option"><input type="radio" name="q8" value="A"><span class="mark">A</span><span>후기, 단톡방 반응, 참여자 이야기</span></label>
+  <label class="option"><input type="radio" name="q8" value="B"><span class="mark">B</span><span>결과자료, 사진 정리, 기록 파일</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q9</div><div class="scene">회고</div></div>
+  <div class="qtext">좋았던 프로젝트를 떠올릴 때 더 중요하게 남는 것은?</div>
+  <label class="option"><input type="radio" name="q9" value="A"><span class="mark">A</span><span>같이했던 사람들의 분위기</span></label>
+  <label class="option"><input type="radio" name="q9" value="B"><span class="mark">B</span><span>완성됐을 때의 결과 느낌</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q10</div><div class="scene">자료 발견</div></div>
+  <div class="qtext">오래된 프로젝트 박스를 발견했다.</div>
+  <label class="option"><input type="radio" name="q10" value="A"><span class="mark">A</span><span>‘이때 진짜 고생했는데…’ 하며 사람부터 떠오른다</span></label>
+  <label class="option"><input type="radio" name="q10" value="B"><span class="mark">B</span><span>‘이 자료 아직 남아있네?’ 하며 내용부터 펼쳐본다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q11</div><div class="scene">관계/정리</div></div>
+  <div class="qtext">프로젝트가 끝난 뒤 나는 보통?</div>
+  <label class="option"><input type="radio" name="q11" value="A"><span class="mark">A</span><span>같이했던 사람들과 밥이나 연락을 이어간다</span></label>
+  <label class="option"><input type="radio" name="q11" value="B"><span class="mark">B</span><span>사진·파일·문서를 먼저 정리한다</span></label>
+</section>
+<section class="qcard">
+  <div class="qtop"><div class="qno">Q12</div><div class="scene">마감 전날</div></div>
+  <div class="qtext">결과보고 마감 하루 전 밤. 제일 신경 쓰이는 것은?</div>
+  <label class="option"><input type="radio" name="q12" value="A"><span class="mark">A</span><span>빠진 사람이나 못 챙긴 관계</span></label>
+  <label class="option"><input type="radio" name="q12" value="B"><span class="mark">B</span><span>누락된 자료나 정리 안 된 파일</span></label>
+</section>
+</form>
+
+<button class="btn" type="button" onclick="calculateResult()">결과 보기</button>
+<div id="result"></div>
+</div>
+
+<script>
+var results = {
+"POCL":{name:'현장살림꾼',prop:'🧃',one:'현장의 온도를 먼저 읽고 사람 흐름을 살리는 기획자임.',tags:'#현장감각 #분위기관리 #사람중심',action:'행사장에 들어서면 설치물보다 사람 표정과 공기부터 봄. 누가 어색한지, 어디가 막히는지, 누가 빠져 있는지를 빠르게 알아차림.',strength:'기획서에 적히지 않은 순간을 몸으로 수습함. 참여자가 편안하게 머물 수 있게 만드는 힘이 큼.',caution:'사람을 많이 챙기다 보면 감정노동을 혼자 떠안을 수 있음. 역할과 책임의 경계가 필요함.'},
+"POCA":{name:'기록채집가',prop:'📸',one:'사람들의 이야기와 현장의 작은 장면을 오래 남기는 기획자임.',tags:'#현장기록 #인터뷰 #아카이브',action:'사진, 후기, 발언, 표정 같은 사소한 장면을 쉽게 흘려보내지 않음. 지나간 프로젝트에서도 다시 꺼낼 수 있는 단서를 모아둠.',strength:'시간이 지난 뒤 진가가 드러남. 결과보고서, 사례집, 전시 텍스트, 콘텐츠화에 강함.',caution:'수집이 많아질수록 정리 기준이 필요함. 무엇을 남길지 기준을 잡으면 더 강해짐.'},
+"PORL":{name:'관계운영자',prop:'🤝',one:'프로젝트 이후에도 사람 사이의 연결을 이어가는 기획자임.',tags:'#협업 #관계유지 #신뢰',action:'한 번 만난 사람을 쉽게 흘려보내지 않음. 적절한 때 다시 연락하고, 다음 기회와 자연스럽게 연결함.',strength:'협업자·참여자·기관 사이에서 안정적인 신뢰를 쌓음. 이 유형이 있으면 프로젝트가 덜 삐걱거림.',caution:'거절이 어려워질 수 있음. 좋은 관계와 모든 요구 수용은 다르다는 기준이 필요함.'},
+"PORA":{name:'운영보관자',prop:'📦',one:'현장 경험과 운영 자료를 함께 축적하는 기획자임.',tags:'#운영기억 #자료축적 #안정감',action:'사업이 끝나도 명단, 사진, 진행표, 메모를 그냥 버리지 않음. 다음 프로젝트에 쓸 수 있게 남겨두려 함.',strength:'프로젝트가 매번 처음부터 다시 시작되지 않게 도와줌. 조직의 기억장치 역할을 함.',caution:'운영과 관리가 몰리면 처리 업무에 갇힐 수 있음. 축적한 자료를 다음 기획으로 연결해야 함.'},
+"PXCL":{name:'분위기메이커',prop:'🎤',one:'현장을 살아 움직이게 만드는 에너지형 기획자임.',tags:'#참여유도 #순발력 #현장진행',action:'사람들이 머뭇거리면 먼저 말 걸고 분위기를 푼다. 돌발 상황이 생겨도 흐름을 끊지 않으려 움직임.',strength:'워크숍, 축제, 참여형 프로그램에서 강함. 갑자기 진행을 맡아도 somehow 해내는 편임.',caution:'즉흥성이 강한 만큼 사전 구조가 약하면 뒤처리가 복잡해질 수 있음.'},
+"PXCA":{name:'판벌리는사람',prop:'🔥',one:'새로운 조합과 실험의 판을 여는 기획자임.',tags:'#실험 #새판짜기 #추진력',action:'‘이번엔 다르게 해보자’는 말에 쉽게 반응함. 낯선 협업, 새로운 주제, 예상 밖의 조합에 끌림.',strength:'정체된 분위기에 새 질문을 던지고 조직 안에 활력을 만듦. 작은 아이디어를 실제 프로젝트로 키움.',caution:'판을 많이 벌릴수록 수습 구조가 중요함. 시작만큼 마무리 설계가 필요함.'},
+"PXRL":{name:'감각프로듀서',prop:'🎨',one:'프로젝트의 분위기와 장면의 완성도를 챙기는 기획자임.',tags:'#톤앤매너 #연출 #브랜딩',action:'포스터 톤, 공간 분위기, 굿즈, 사진 구도 같은 디테일을 그냥 못 넘김. 결과물이 어떻게 보이고 느껴지는지에 민감함.',strength:'전시, 축제, 홍보물, 공간 구성에서 강함. 같은 사업도 더 매력적인 장면으로 바꿔냄.',caution:'디테일에 오래 머물면 일정과 충돌할 수 있음. 구현 범위를 정하는 감각이 필요함.'},
+"PXRA":{name:'없는거만드는사람',prop:'🧪',one:'기존에 없던 형식과 콘텐츠를 만들어내는 기획자임.',tags:'#콘텐츠개발 #조합능력 #새로움',action:'익숙한 사업도 다르게 해석함. 지역 이야기, 사람, 장소, 트렌드를 엮어 새로운 포맷으로 바꾸려 함.',strength:'‘그걸 그렇게 연결한다고?’라는 반응을 자주 얻음. 아이디어를 결과물로 변환하는 힘이 큼.',caution:'새로움이 앞서면 조직이나 참여자가 따라오기 어려움. 설득 가능한 언어로 번역해야 함.'},
+"SOCL":{name:'회의정리반',prop:'📝',one:'흩어진 말을 실행 가능한 결론으로 정리하는 기획자임.',tags:'#회의정리 #우선순위 #조율',action:'회의가 길어지면 지금까지 나온 이야기를 묶기 시작함. ‘그래서 결정할 게 뭐지?’를 놓치지 않음.',strength:'프로젝트 초반과 중간 점검에서 특히 필요함. 아이디어를 일정, 역할, 실행계획으로 바꿈.',caution:'너무 빨리 정리하면 열려 있어야 할 아이디어까지 닫을 수 있음. 정리와 확장의 타이밍이 중요함.'},
+"SOCA":{name:'파일폴더수호자',prop:'🗂️',one:'자료와 기록의 질서를 지키는 조직의 메모리형 기획자임.',tags:'#자료관리 #파일정리 #업무기억',action:'파일명, 폴더 구조, 사진 분류, 결과보고서가 제자리에 있어야 마음이 놓임. ‘그 자료 어디 있지?’에 가장 빨리 반응함.',strength:'담당자가 바뀌어도 일이 이어지게 만듦. 반복 실수를 줄이고 조직의 업무 기억을 지킴.',caution:'정리가 개인 능력에만 의존하면 부담이 커짐. 모두가 쓸 수 있는 규칙으로 바꿔야 함.'},
+"SORL":{name:'기획설계러',prop:'📐',one:'아이디어를 실제 사업 구조로 바꾸는 기획자임.',tags:'#사업설계 #예산감각 #실행구조',action:'좋은 취지나 재미있는 제안도 예산, 일정, 인력, 성과 안에서 어떻게 굴러갈지 함께 봄.',strength:'공모사업, 운영계획, 프로그램 설계에 강함. ‘하면 좋겠다’를 ‘이렇게 하면 가능하다’로 바꿈.',caution:'현실성만 먼저 따지면 생동감이 줄 수 있음. 좋은 아이디어를 살려 구조화하는 방식이 필요함.'},
+"SORA":{name:'시스템조립가',prop:'⚙️',one:'한 번의 성공보다 계속 굴러갈 구조를 만드는 기획자임.',tags:'#매뉴얼 #체계화 #지속가능',action:'‘왜 매번 새로 하지?’ ‘다음 담당자도 쓸 수 있게 남겨야 하지 않을까?’를 자주 생각함.',strength:'운영 규칙, 매뉴얼, 데이터베이스, 업무 프로세스 구축에 강함. 반복 가능한 기반을 만듦.',caution:'모든 것을 시스템화하면 현장 유연성이 줄 수 있음. 규칙과 판단의 영역을 구분해야 함.'},
+"SXCL":{name:'변화촉진자',prop:'🌱',one:'사람과 현장을 움직여 새로운 흐름을 만드는 기획자임.',tags:'#변화 #설득 #현장전환',action:'기존 방식의 한계를 느끼면 불평에서 멈추지 않고 사람들을 설득해 작은 시도를 만들어봄.',strength:'조직 안에서 중요한 전환점을 만들 수 있음. 변화 필요성을 현장 언어로 풀어냄.',caution:'모두가 같은 속도로 움직이지 않음. 작은 성공 사례부터 만드는 방식이 효과적임.'},
+"SXCA":{name:'프로젝트실험체',prop:'🚀',one:'새로운 플랫폼과 협업 방식을 계속 실험하는 기획자임.',tags:'#실험실 #플랫폼 #협업',action:'익숙한 방식보다 아직 해보지 않은 가능성에 끌림. 프로젝트를 하나의 실험실처럼 바라봄.',strength:'새로운 매체, 청년 기획, 기술 활용, 장르 간 협업에서 강함. 낯선 자극을 조직에 가져옴.',caution:'실험이 자산이 되려면 기록과 검증이 필요함. 무엇을 확인했는지 남겨야 함.'},
+"SXRL":{name:'큰그림러',prop:'🧭',one:'개별 프로젝트를 더 큰 방향과 흐름으로 엮는 기획자임.',tags:'#전략 #브랜딩 #방향설정',action:'사업 하나를 봐도 조직 이미지, 지역 의제, 다음 사업과 어떻게 연결되는지 함께 생각함.',strength:'흩어진 사업에 방향성을 부여하고 조직이 어디로 가는지 설명하는 언어를 만듦.',caution:'큰 그림만 앞서면 실행이 추상적으로 남을 수 있음. 일정, 예산, 역할로 내려놓는 과정이 필요함.'},
+"SXRA":{name:'왜우린아직도형',prop:'🛠️',one:'오래된 일하는 방식에 질문을 던지는 구조개선형 기획자임.',tags:'#구조개선 #질문 #관성깨기',action:'‘왜 매번 이렇게 하지?’ ‘이 과정이 꼭 필요할까?’ 같은 질문이 자연스럽게 나옴.',strength:'반복되는 비효율과 형식적 절차를 잘 발견함. 불편하지만 꼭 필요한 질문을 던짐.',caution:'질문이 날카롭게만 전달되면 방어적 반응을 부를 수 있음. 작은 대안까지 함께 제시하면 힘이 커짐.'}
+};
+
+function updateProgress(){
+  var count = 0;
+  for(var i=1;i<=12;i++){ if(document.querySelector('input[name="q'+i+'"]:checked')) count++; }
+  var bar=document.getElementById("bar"); if(bar) bar.style.width=(count/12*100)+"%";
+}
+document.querySelectorAll('input[type="radio"]').forEach(function(el){ el.addEventListener('change', updateProgress); });
+
+function calculateResult(){
+  var ans=[];
+  for(var i=1;i<=12;i++){
+    var checked=document.querySelector('input[name="q'+i+'"]:checked');
+    if(!checked){ alert("모든 문항에 답변해주셈"); return; }
+    ans.push(checked.value);
+  }
+  var pairs=[["P","S"],["O","X"],["C","R"],["L","A"]];
+  var code="";
+  for(var g=0;g<4;g++){
+    var aCount=0;
+    for(var q=g*3;q<g*3+3;q++){ if(ans[q]==="A") aCount++; }
+    code += aCount>=2 ? pairs[g][0] : pairs[g][1];
+  }
+  var r=results[code];
+  var tagHtml="";
+  r.tags.split(" ").forEach(function(tag){ tagHtml += '<span class="tag">'+tag+'</span>'; });
+  var result=document.getElementById("result");
+  result.style.display="block";
+  result.innerHTML =
+  '<section class="result-card">'+
+  '<div class="visual"><div class="person"><div class="head"><div class="hair"></div><div class="eye left"></div><div class="eye right"></div><div class="mouth"></div></div><div class="body"></div><div class="prop">'+r.prop+'</div></div></div>'+
+  '<div class="code">'+code+'</div>'+
+  '<div class="rname">'+r.name+'</div>'+
+  '<div class="one">'+r.one+'</div>'+
+  '<div class="tags">'+tagHtml+'</div>'+
+  '<div class="info"><h3>이 유형의 대표 행동</h3><p>'+r.action+'</p></div>'+
+  '<div class="info"><h3>강점</h3><p>'+r.strength+'</p></div>'+
+  '<div class="info"><h3>주의할 점</h3><p>'+r.caution+'</p></div>'+
+  '<div class="note">유형은 좋고 나쁨의 구분이 아님. 프로젝트 안에서 서로 다른 방식으로 움직이고 살아남는 습관을 보는 테스트임.</div>'+
+  '<button class="btn secondary" type="button" onclick="location.reload()">다시 하기</button>'+
+  '</section>';
+  result.scrollIntoView({behavior:"smooth",block:"start"});
+}
+</script>
+</body>
+</html>
